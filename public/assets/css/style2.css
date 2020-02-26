@@ -1,0 +1,89 @@
+.wrapper {
+    width: 100%;
+    max-width: 1920px;
+    margin: auto;
+}
+
+.jumbotron {
+    background-image: url(../img/1.jpg);
+    background-size: cover;
+    height: 100vh;
+    text-align: center;
+}
+
+.jumbotron .display-4 {
+    color: #fff;
+    /* margin-top: 15rem; */
+}
+
+.jumbotron hr {
+    border-color: #f05f40;
+    width: 500px;
+    border-width: 3px;
+}
+
+.jumbotron p {
+    color: #fff;
+    font-size: 1.6em;
+}
+
+.jumbotron .btn {
+    background-color: #f05f40;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    /* margin-top: 40px; */
+}
+
+/* Slider */
+.carousel-item {
+    height: 100vh;
+}
+
+.carousel-item img {
+    margin-top: -120px;
+    filter: contrast(75%) brightness(40%);
+}
+
+.carousel-item .display-4 {
+    margin-top: -440px;
+}
+
+.carousel-item hr {
+    border-color: #f05f40;
+    width: 500px;
+    border-width: 3px;
+}
+
+.carousel-item .btn {
+    background-color: #f05f40;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    text-transform: uppercase;
+    margin-top: 40px;
+}
+
+.hover {
+    transition: .4s;
+    cursor: pointer;
+}
+
+.hover:hover {
+    transform: scale(1.1);
+}
+
+.nav-hover {
+    transition: .4s;
+    cursor: pointer;
+}
+
+.nav-hover:hover {
+    margin-left: 10px;
+}
+.bg-gambar{
+    background: url('../img/sport-car1.jpg') center no-repeat;
+    width: 90% !important;
+    background-size: cover;
+}
