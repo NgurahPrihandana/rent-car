@@ -16,8 +16,8 @@
                         <p class="card-text">Tanggal Lahir : <?= $member['tanggal_lahir']?></p>
                     </div>
                     <div class="card-footer bg-primary">
-                        <a href="/user/detail_member/<?= $member['id_member']?>" class="btn btn-success float-right">Detail</a>
-                        <a href="/member/hapus/<?= $member['id_member']?>" class="btn btn-danger float-right mr-2">Hapus</a>
+                        <a href="<?= BASEURL?>/user/detail_member/<?= $member['id_member']?>" class="btn btn-success float-right">Detail</a>
+                        <a href="<?= BASEURL?>/member/hapus/<?= $member['id_member']?>" class="btn btn-danger float-right mr-2">Hapus</a>
                     </div>
                 </div>
             </div>

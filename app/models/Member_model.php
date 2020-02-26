@@ -20,7 +20,7 @@ class Member_model {
     {
         $this->db->query("SELECT * FROM " . $this->table . "WHERE id = :id");
         $this->db->bind('id',$id);
-        return $this->db->fetch();
+        return $this->db->single();
     }
 
     public function tambahMember($data) 
