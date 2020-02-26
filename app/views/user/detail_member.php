@@ -57,25 +57,6 @@
                                             <?php else  :?><?= $data['getSpcMember']['nama'] . " Belum Pernah melakukan Peminjaman"?>
                                             <?php endif;?>" disabled>
                             </div>
-
-                            <div class="form-group">
-                                <label for="nomor_ktp">Nomor KTP</label>
-                                <input type="number" class="form-control" id="nomor_ktp" name="nomor_ktp" value="<?= $data['getSpcMember']['nomor_ktp']?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="alamat">Alamat</label>
-                                <input type="text" class="form-control" id="alamat" name="alamat" value="<?= $data['getSpcMember']['alamat']?>">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="tanggal_lahir">Tanggal Lahir</label>
-                                <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="<?= $data['getSpcMember']['tanggal_lahir']?>">
-                            </div>
-
-                            <div class="d-flex flex-row-reverse mt-4">
-                                <button type="submit" class="btn btn-primary mb-2">Edit Member</button>
-                            </div>
                     </form>
                 </div>
             </div> <!-- card -->
