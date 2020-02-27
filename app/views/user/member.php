@@ -15,7 +15,7 @@
                 <div class="card text-white bg-dark shadow mt-3" style="width: 18rem;">
                     <div class="card-header bg-dark" style="font-size:1.4em;"><?= $member['nama']?></div>
                     <div class="card-body">
-                        <h5 class="card-title fa-1x">Nomor KTP : <br><br>[<?= $member['nomor_ktp']?>]</h5>
+                        <h5 class="card-title fa-1x">Nomor KTP : <span style="letter-spacing: .3em;"><?= $member['nomor_ktp']?></span></h5>
                         <!-- Divider -->
                         <hr class="sidebar-divider bg-white">
 

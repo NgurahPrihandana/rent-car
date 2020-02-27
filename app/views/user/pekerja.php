@@ -1,29 +1,44 @@
 <div class="container shadow p-4 mb-5 bg-white rounded">
-    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-        <div class="input-group">
-            <input type="text" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-            <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-                <i class="fas fa-search fa-sm"></i>
-            </button>
-            </div>
-        </div>
-    </form>
+    
     <div class="row ml-5">
-        <?php foreach($data['auth'] as $auth)   :?>
-            <div class="col-lg-4 card-deck mr-2 mt-3">
-                <div class="card text-white bg-dark shadow mt-3" style="max-width: 18rem;">
-                    <div class="card-header bg-dark" style="font-size:1.4em;"><?= $auth['nama_pekerja']?></div>
-                    <div class="card-body">
-                        <h5 class="card-title fa-1x">Username : <?= $auth['username']?></h5>
-                        
-                        
-                    </div>
-                    <div class="card-footer bg-dark">
-                        <a href="<?= BASEURL?>/user/hapus_pekerja/<?= $auth['id_auth']?>" class="btn btn-danger float-right mr-2">Hapus</a>
-                    </div>
-                </div>
+        <div class="card" style="width:63rem;">
+            <div class="card-header">
+                <i class="far fa-id-badge fa-2x"></i> <span class="fa-2x ml-1">Our Employee</span>
             </div>
-        <?php endforeach;?>
+            <div class="card-body">
+                <table class="table  table-bordered" id="tablePengeluaran">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama Pekerja</th>
+                            <th scope="col">Username Pekerja</th>
+                            <th scope="col">Role</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $i = 1;?>
+                        <?php foreach($data['auth'] as $auth)   :?>
+                            <tr>
+                                <th scope="row"><?= $i++?></th>
+                                <td><?= $auth['nama_pekerja']?></td>
+                                <td><?= $auth['username']?></td>
+                                <td>
+                                    <?php if($auth['level']== 1 )   :?>
+                                        Admin
+                                    <?php else  :?>
+                                        Petugas
+                                    <?php endif;?>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <a href="<?= BASEURL?>/user/hapus_pekerja/<?= $auth['id_auth']?>" class="btn btn-danger btn-sm">Hapus</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php endforeach;?>
+                    </tbody>
+                </table>
+            </div>            
     </div>
 </div>

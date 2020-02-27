@@ -50,6 +50,17 @@
             $this->view('user/pekerja',$data);
             $this->view('templates/footer',$data);
         }
+
+        public function hapus_pekerja($id_pekerja)
+        {
+            if($this->model('User_model')->hapusPekerja($id_pekerja) > 0) {
+                Flasher::setFlash('berhasil','dihapus','success');
+                header('Location:' . BASEURL . '/user/pekerja');
+            } else {
+                Flasher::setFlash('gagal','dihapus','danger');
+                header('Location:' . BASEURL . '/user/pekerja');
+            };
+        }
     }
 
 
