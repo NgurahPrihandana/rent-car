@@ -12,7 +12,7 @@
 
         public function getAllAuth()
         {
-            $query = "SELECT * FROM ". $this->table . " ";
+            $query = "SELECT * FROM ". $this->table . " WHERE level = 2";
             $this->db->query($query);
             $this->db->execute();
             return $this->db->resultSet();

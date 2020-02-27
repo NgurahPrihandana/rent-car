@@ -36,7 +36,7 @@
 </li>
 
 <li class="nav-item">
-  <a class="nav-link collapsed nav-hover" href="<?= BASEURL?>/pengembalian/index">
+  <a class="nav-link collapsed nav-hover" href="<?= BASEURL?>/user/pekerja">
     <i class="fas fa-calendar"></i>
     <span>Data Pekerja</span>
   </a>

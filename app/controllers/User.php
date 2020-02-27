@@ -6,6 +6,10 @@
         public function index()
         {
             $data['judul'] = "Welcome Admin";
+            $data['as'] = $this->model('Member_model')->getAllMember();
+            $data['mobil'] = $this->model('Mobil_model')->getAllMobil();
+            $data['peminjaman'] = $this->model('Peminjaman_model')->getAllPeminjaman();
+            $data['pengembalian'] = $this->model('Pengembalian_model')->getAllPengembalian();
             $this->view('templates/header',$data);
             $this->view('templates/user/sidebar',$data);
             $this->view('templates/topbar',$data);
@@ -15,7 +19,7 @@
 
         public function member()
         {
-            $data['judul'] = "Welcome Admin";
+            $data['judul'] = "Member Detail";
             $data['as'] = $this->model('Member_model')->getAllMember();
             $this->view('templates/header',$data);
             $this->view('templates/user/sidebar',$data);
@@ -33,6 +37,17 @@
             $this->view('templates/user/sidebar',$data);
             $this->view('templates/topbar',$data);
             $this->view('user/detail_member',$data);
+            $this->view('templates/footer',$data);
+        }
+
+        public function pekerja()
+        {
+            $data['judul'] = "Detail Pekerja";
+            $data['auth'] = $this->model('Auth_model')->getAllAuth();
+            $this->view('templates/header',$data);
+            $this->view('templates/user/sidebar',$data);
+            $this->view('templates/topbar',$data);
+            $this->view('user/pekerja',$data);
             $this->view('templates/footer',$data);
         }
     }
