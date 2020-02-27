@@ -4,6 +4,7 @@
     {
         private $table = 'peminjaman';
         private $table_user = 'auth';
+        private $table_mobil = 'tb_mobil';
         private $tb;
 
         public function __construct()
@@ -28,6 +29,16 @@
             $this->db->bind('id_pekerja',$id_pekerja);
             $this->db->execute();
             return $this->db->rowCount();
+        }
+
+        public function getSpcDetailMobil($id_mobil)
+        {
+            $query = "SELECT * FROM " . $this->table_mobil ."
+                    INNER JOIN jenis_mobil ON tb_mobil.id_jenis_mobil = jenis_mobil.id_jenis_mobil
+            WHERE id_mobil = :id_mobil";
+            $this->db->query($query);
+            $this->db->bind('id_mobil',$id_mobil);
+            return $this->db->resultSet();
         }
     }
 

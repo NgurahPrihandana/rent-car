@@ -61,6 +61,29 @@
                 header('Location:' . BASEURL . '/user/pekerja');
             };
         }
+
+        public function mobil()
+        {
+            $data['judul'] = "Detail Mobil";
+            $data['mobil'] = $this->model('Mobil_model')->getAllMobil();
+            $this->view('templates/header',$data);
+            $this->view('templates/user/sidebar',$data);
+            $this->view('templates/topbar',$data);
+            $this->view('user/mobil',$data);
+            $this->view('templates/footer',$data);
+        }
+
+        public function detail_mobil($id_mobil)
+        {
+            $data['judul'] = "Detail Mobil";
+            $data['getSpcDetailMobil'] = $this->model('User_model')->getSpcDetailMobil($id_mobil)[0];
+            $data['jenis'] = $this->model('Mobil_model')->getAllJenis();
+            $this->view('templates/header',$data);
+            $this->view('templates/user/sidebar',$data);
+            $this->view('templates/topbar',$data);
+            $this->view('user/detail_mobil',$data);
+            $this->view('templates/footer',$data);
+        }
     }
 
 

@@ -12,8 +12,8 @@
     <div class="row ml-5">
         <?php foreach($data['as'] as $member)   :?>
             <div class="col-lg-6 card-deck mt-3">
-                <div class="card text-white bg-dark shadow mt-3" style="width: 18rem;">
-                    <div class="card-header bg-dark" style="font-size:1.4em;"><?= $member['nama']?></div>
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded"" style="width: 18rem;">
+                    <div class="card-header bg-white" style="font-size:1.4em;"><?= $member['nama']?></div>
                     <div class="card-body">
                         <h5 class="card-title fa-1x">Nomor KTP : <span style="letter-spacing: .3em;"><?= $member['nomor_ktp']?></span></h5>
                         <!-- Divider -->
@@ -25,7 +25,7 @@
                         
                         <p class="card-text">Tanggal Lahir : <?= $member['tanggal_lahir']?></p>
                     </div>
-                    <div class="card-footer bg-dark">
+                    <div class="card-footer bg-white">
                         <a href="<?= BASEURL?>/user/detail_member/<?= $member['id_member']?>" class="btn btn-success float-right">Detail</a>
                         <a href="<?= BASEURL?>/member/hapus/<?= $member['id_member']?>" class="btn btn-danger float-right mr-2">Hapus</a>
                     </div>

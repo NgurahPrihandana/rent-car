@@ -1,7 +1,7 @@
 <div class="container shadow p-4 mb-5 bg-white rounded">
     <div class="row">
         <div class="col-lg-12">
-        <a href="<?= BASEURL?>/member"><i class="fas fa-circle float-right mb-4" style="color:red;"></i></a>
+        <a href="<?= BASEURL?>/user/member"><i class="fas fa-circle float-right mb-4" style="color:red;"></i></a>
         </div>
         <div class="col-lg-6">
             <div class="card">

@@ -52,7 +52,7 @@
 
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item">
-  <a class="nav-link collapsed nav-hover" href="<?= BASEURL;?>/mobil">
+  <a class="nav-link collapsed nav-hover" href="<?= BASEURL;?>/user/mobil">
     <i class="fas fa-car"></i>
     <span>Data Mobil</span>
   </a>
