@@ -76,8 +76,11 @@
         public function detail_mobil($id_mobil)
         {
             $data['judul'] = "Detail Mobil";
-            $data['getSpcDetailMobil'] = $this->model('User_model')->getSpcDetailMobil($id_mobil)[0];
+            $data['spcDetailMobil'] = $this->model('User_model')->getSpcDetailMobil($id_mobil);
             $data['jenis'] = $this->model('Mobil_model')->getAllJenis();
+            $data['spcDetailService'] = $this->model('User_model')->getSpcDetailService($id_mobil);
+            $data['spcDetailSamsat'] = $this->model('User_model')->getSpcDetailSamsat($id_mobil);
+            $data['spcMobilPeminjaman'] = $this->model('User_model')->getSpcMobilPeminjaman($id_mobil);
             $this->view('templates/header',$data);
             $this->view('templates/user/sidebar',$data);
             $this->view('templates/topbar',$data);

@@ -5,6 +5,7 @@
         private $table = 'peminjaman';
         private $table_user = 'auth';
         private $table_mobil = 'tb_mobil';
+        private $table_pengeluaran = 'pengeluaran';
         private $tb;
 
         public function __construct()
@@ -38,6 +39,32 @@
             WHERE id_mobil = :id_mobil";
             $this->db->query($query);
             $this->db->bind('id_mobil',$id_mobil);
+            return $this->db->single();
+        }
+
+        public function getSpcDetailService($id_mobil)
+        {
+            $query = "SELECT * FROM " . $this->table_pengeluaran . " WHERE type = 2 AND riwayat = 1 AND id_mobil = :id_mobil";
+            $this->db->query($query);
+            $this->db->bind('id_mobil',$id_mobil);
+            return $this->db->resultSet();
+        }
+
+        public function getSpcDetailSamsat($id_mobil)
+        {
+            $query = "SELECT * FROM " . $this->table_pengeluaran . " WHERE type = 1 AND riwayat = 1 AND id_mobil = :id_mobil";
+            $this->db->query($query);
+            $this->db->bind('id_mobil',$id_mobil);
+            return $this->db->resultSet();
+        }
+
+        public function getSpcMobilPeminjaman($id)
+        {
+            $query = "SELECT *, DATE_FORMAT(tanggal_peminjaman, '%d-%m-%Y') as tgl_pinjam, 
+                        DATE_FORMAT(waktu_pinjam, '%d-%m-%Y') as waktu_pinjam FROM " . $this->table. 
+                        " WHERE peminjaman.status = 1 AND peminjaman.id_mobil = :id";
+            $this->db->query($query);
+            $this->db->bind('id',$id);
             return $this->db->resultSet();
         }
     }
