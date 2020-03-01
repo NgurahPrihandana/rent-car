@@ -31,10 +31,10 @@ class Pengeluaran extends Controller
     public function hapus($id)
     {
         if($this->model('Pengeluaran_model')->hapusPengeluaran($id) > 0) {
-            Flasher::setFlash("berhasil","ditambahkan","success");
+            Flasher::setFlash("berhasil","dihapus","success");
             header("Location: " . BASEURL . "/pengeluaran");
         }else {
-            Flasher::setFlash("gagal","ditambahkan","danger");
+            Flasher::setFlash("gagal","dihapus","danger");
             header("Location: " . BASEURL . "/pengeluaran");
         }
     }

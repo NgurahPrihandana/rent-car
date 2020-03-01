@@ -66,6 +66,7 @@
         {
             $data['judul'] = "Detail Mobil";
             $data['mobil'] = $this->model('Mobil_model')->getAllMobil();
+            $data['jenis'] = $this->model('Mobil_model')->getAllJenis();
             $this->view('templates/header',$data);
             $this->view('templates/user/sidebar',$data);
             $this->view('templates/topbar',$data);
@@ -85,6 +86,20 @@
             $this->view('templates/user/sidebar',$data);
             $this->view('templates/topbar',$data);
             $this->view('user/detail_mobil',$data);
+            $this->view('templates/footer',$data);
+        }
+
+        public function pengeluaran()
+        {
+            $data['judul'] = "Pengeluaran Mobil";
+            $data['as'] = $this->model('Member_model')->getAllMember();
+            $data['mobil'] = $this->model('Mobil_model')->getAllMobil();
+            $data['spc_mobil'] = $this->model('Mobil_model')->getSpecifiedMobil();
+            $data['pengeluaran'] = $this->model('Pengeluaran_model')->getAllPengeluaran();
+            $this->view('templates/header',$data);
+            $this->view('templates/user/sidebar',$data);
+            $this->view('templates/topbar',$data);
+            $this->view('user/pengeluaran',$data);
             $this->view('templates/footer',$data);
         }
     }

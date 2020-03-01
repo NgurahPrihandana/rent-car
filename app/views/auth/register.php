@@ -7,10 +7,11 @@
           <div class="col-lg-5 d-none d-lg-block bg-login-image"></div>
           <div class="col-lg-7">
             <div class="p-5">
+            <?= Flasher::authFlash();?>
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <form class="user" method="POST" action="">
+              <form class="user" method="post" action="<?= BASEURL?>/auth/register">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" name="nama_pekerja" class="form-control form-control-user" id="exampleFirstName" placeholder="Nama">

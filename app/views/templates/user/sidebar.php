@@ -58,6 +58,13 @@
   </a>
 </li>
 
+<li class="nav-item">
+  <a class="nav-link collapsed nav-hover" href="<?= BASEURL;?>/user/pengeluaran">
+    <i class="fas fa-car"></i>
+    <span>Data Pengeluaran</span>
+  </a>
+</li>
+
 <!-- Divider -->
 <hr class="sidebar-divider">
 

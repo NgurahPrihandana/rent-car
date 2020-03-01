@@ -37,6 +37,15 @@
             return $this->db->rowCount();
         }
 
+        public function hapusPengeluaran($id_pengeluaran)
+        {
+            $query = "DELETE FROM " . $this->table . " WHERE id_pengeluaran = :id_pengeluaran";
+            $this->db->query($query);
+            $this->db->bind('id_pengeluaran',$id_pengeluaran);
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
+
         public function donePengeluaran($data,$id,$type)
         {
             if($type == 2) {
