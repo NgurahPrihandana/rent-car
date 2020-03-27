@@ -1,17 +1,20 @@
 <div class="container shadow p-4 mb-5 bg-white rounded">
-    <div class="d-flex justify-content-between">
-        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+    <div class="d-flex justify-content-lg-between">
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="post" action="<?=BASEURL?>/user/cari_member">
             <div class="input-group">
-                <input type="text" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                <input type="text" name="keyword" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
                 <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-primary" type="submit">
                     <i class="fas fa-search fa-sm"></i>
                 </button>
                 </div>
             </div>
         </form>
         <div>
-        <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target=".modalTambahMember">
+            <a class="btn btn-success second-view" href="<?= BASEURL?>/user/member/">Table View</a>
+        </div>
+        <div>
+        <button type="button" name="search" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target=".modalTambahMember">
             <span class="icon text-white-50">
                     <i class="fas fa-plus"></i>
             </span>
@@ -22,7 +25,7 @@
     <div class="row ml-5">
         <?php foreach($data['as'] as $member)   :?>
             <div class="col-lg-6 card-deck mt-3">
-                <div class="card shadow-lg p-3 mb-5 bg-white rounded"" style="width: 18rem;">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 18rem;">
                     <div class="card-header bg-white" style="font-size:1.4em;"><?= $member['nama']?></div>
                     <div class="card-body">
                         <h5 class="card-title fa-1x">Nomor KTP : <span style="letter-spacing: .3em;"><?= $member['nomor_ktp']?></span></h5>
@@ -33,11 +36,11 @@
 
                         <hr class="sidebar-divider bg-white">
                         
-                        <p class="card-text">Tanggal Lahir : <?= $member['tanggal_lahir']?></p>
+                        <p class="card-text">Tanggal Lahir : <?= date('d-F-Y',strtotime($member['tanggal_lahir']))?></p>
                     </div>
                     <div class="card-footer bg-white">
                         <a href="<?= BASEURL?>/user/detail_member/<?= $member['id_member']?>" class="btn btn-success float-right">Detail</a>
-                        <a href="<?= BASEURL?>/member/hapus/<?= $member['id_member']?>" class="btn btn-danger float-right mr-2">Hapus</a>
+                        <a href="<?= BASEURL?>/member/hapus/<?= $member['id_member']?>" onclick="return confirm('Yakin Untuk Menghapus Member Ini ?');" class="btn btn-danger float-right mr-2">Hapus</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +62,7 @@
               <div class="form mt-3 container">
                   <form action="<?=BASEURL; ?>/Member/tambah" method="post">
                     <div class="form-group">
-                      <input type="hidden" value="">
+                      <input type="hidden" value="<?=$data['function']?>">
                     </div>
                     <div class="form-group">
                         <label for="nama">Nama  :</label>
@@ -68,7 +71,7 @@
 
                     <div class="form-group">
                       <label for="nomor_ktp">Nomor KTP  :</label>
-                      <input type="number" class="form-control" id="nomor_ktp" name="nomor_ktp" required>
+                      <input type="number" class="form-control" id="nomor_ktp" name="nomor_ktp" minlength="16" required>
                     </div>
 
                     <div class="form-group">

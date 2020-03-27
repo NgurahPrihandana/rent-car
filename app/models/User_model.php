@@ -6,6 +6,7 @@
         private $table_user = 'auth';
         private $table_mobil = 'tb_mobil';
         private $table_pengeluaran = 'pengeluaran';
+        private $done_pengeluaran = 'tb_done_pengeluaran';
         private $tb;
 
         public function __construct()
@@ -44,7 +45,7 @@
 
         public function getSpcDetailService($id_mobil)
         {
-            $query = "SELECT * FROM " . $this->table_pengeluaran . " WHERE type = 2 AND riwayat = 1 AND id_mobil = :id_mobil";
+            $query = "SELECT * FROM " . $this->done_pengeluaran . " WHERE id_mobil = :id_mobil";
             $this->db->query($query);
             $this->db->bind('id_mobil',$id_mobil);
             return $this->db->resultSet();
@@ -52,7 +53,7 @@
 
         public function getSpcDetailSamsat($id_mobil)
         {
-            $query = "SELECT * FROM " . $this->table_pengeluaran . " WHERE type = 1 AND riwayat = 1 AND id_mobil = :id_mobil";
+            $query = "SELECT * FROM " . $this->done_pengeluaran . " WHERE id_mobil = :id_mobil";
             $this->db->query($query);
             $this->db->bind('id_mobil',$id_mobil);
             return $this->db->resultSet();

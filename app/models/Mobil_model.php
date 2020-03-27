@@ -51,7 +51,9 @@
         public function hapusMobil($data)
         {
             $query = "DELETE FROM " . $this->table . "
-                        WHERE id_mobil = :id;
+                        WHERE id_mobil = :id
+                        ;DELETE FROM pengeluaran WHERE id_mobil = :id
+                        ;DELETE FROM peminjaman WHERE id_mobil = :id
             ";
 
             $this->db->query($query);
@@ -84,6 +86,22 @@
         
         $this->db->execute();
         return $this->db->rowCount();
+    }
+
+    public function searchMobil()   {
+
+        $keyword = $_POST['keyword'];
+        
+        $query ="SELECT * FROM  " . $this->table . "
+                    INNER JOIN jenis_mobil ON tb_mobil.id_jenis_mobil = jenis_mobil.id_jenis_mobil WHERE 
+                    nama_mobil LIKE :keyword OR
+                    jenis_mobil LIKE :keyword OR
+                    plat LIKE :keyword ";
+
+        $this->db->query($query);
+        $this->db->bind('keyword',"%$keyword%");
+
+        return $this->db->resultSet();
     }
 
         

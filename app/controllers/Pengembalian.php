@@ -21,9 +21,17 @@
         public function hapus($id_pengembalian,$id_peminjaman)
         {
             if($this->model('Pengembalian_model')->hapusPengembalian($id_pengembalian,$id_peminjaman) > 0) {
-                header('Location: ' . BASEURL .'/pengembalian');
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/pengembalian');
+                  }else {
+                      header('Location:' .BASEURL. '/user/pengembalian');
+                  }
             } else {
-                echo 'Mantap';
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/pengembalian');
+                  }else {
+                      header('Location:' .BASEURL. '/user/pengembalian');
+                  }
             }
         }
 

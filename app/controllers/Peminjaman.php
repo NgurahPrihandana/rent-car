@@ -22,10 +22,18 @@
         {
             if($this->model('Peminjaman_model')->tambahPeminjaman($_POST)) {
                 Flasher::setFlash('berhasil','ditambahkan','success');
-                header('Location: ' . BASEURL .'/Peminjaman');
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/peminjaman');
+                  }else {
+                      header('Location:' .BASEURL. '/user/peminjaman');
+                  }
             } else {
                 Flasher::setFlash('gagal','ditambahkan','danger');
-                header('Location: ' . BASEURL .'/Peminjaman');
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/peminjaman');
+                  }else {
+                      header('Location:' .BASEURL. '/user/peminjaman');
+                  }
             }
         }
 
@@ -33,10 +41,18 @@
         {
             if($this->model('Peminjaman_model')->hapusPeminjaman($id)) {
                 Flasher::setFlash('berhasil','dihapus','success');
-                header('Location: ' . BASEURL .'/Peminjaman');
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/peminjaman');
+                  }else {
+                      header('Location:' .BASEURL. '/user/peminjaman');
+                  }
             } else {
                 Flasher::setFlash('gagal','dihapus','danger');
-                header('Location: ' . BASEURL .'/Peminjaman');
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/peminjaman');
+                  }else {
+                      header('Location:' .BASEURL. '/user/peminjaman');
+                  }
             }
         }
 
@@ -56,10 +72,18 @@
         public function runEdit() {
             if($this->model('Peminjaman_model')->editPeminjaman($_POST) > 0) {
                 Flasher::setFlash('berhasil','dirubah','success');
-                header('Location: ' . BASEURL . "/peminjaman");  
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/peminjaman');
+                  }else {
+                      header('Location:' .BASEURL. '/user/peminjaman');
+                  }
             } else {
                 Flasher::setFlash('gagal','dirubah','danger');
-                header('Location: ' . BASEURL . "/peminjaman");
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/peminjaman');
+                  }else {
+                      header('Location:' .BASEURL. '/user/peminjaman');
+                  }
             }
         }
 
@@ -67,10 +91,18 @@
         {
             if($this->model('Peminjaman_model')->donePeminjaman($id,$id_mobil) > 0 ) {
                 Flasher::setFlash('berhasil','dikembalikan','success');
-                header('Location: ' . BASEURL . '/peminjaman');
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/peminjaman');
+                  }else {
+                      header('Location:' .BASEURL. '/user/peminjaman');
+                  }
             } else {
                 Flasher::setFlash('gagal','dikembalikan','danger');
-                header('Location: ' . BASEURL . '/peminjaman');
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/peminjaman');
+                  }else {
+                      header('Location:' .BASEURL. '/user/peminjaman');
+                  }
             }
         }
 

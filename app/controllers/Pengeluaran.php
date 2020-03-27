@@ -21,10 +21,18 @@ class Pengeluaran extends Controller
     {
         if($this->model('Pengeluaran_model')->tambahPengeluaran($_POST) > 0){
             Flasher::setFlash("berhasil","ditambahkan","succes");
-            header("Location: " . BASEURL . "/pengeluaran");
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/pengeluaran');
+              }else {
+                  header('Location:' .BASEURL. '/user/pengeluaran');
+              }
         }else {
             Flasher::setFlash("gagal","ditambahkan","danger");
-            header("Location: " . BASEURL . "/pengeluaran");
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/pengeluaran');
+              }else {
+                  header('Location:' .BASEURL. '/user/pengeluaran');
+              }
         }
     }
 
@@ -32,10 +40,18 @@ class Pengeluaran extends Controller
     {
         if($this->model('Pengeluaran_model')->hapusPengeluaran($id) > 0) {
             Flasher::setFlash("berhasil","dihapus","success");
-            header("Location: " . BASEURL . "/pengeluaran");
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/pengeluaran');
+              }else {
+                  header('Location:' .BASEURL. '/user/pengeluaran');
+              }
         }else {
             Flasher::setFlash("gagal","dihapus","danger");
-            header("Location: " . BASEURL . "/pengeluaran");
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/pengeluaran');
+              }else {
+                  header('Location:' .BASEURL. '/user/pengeluaran');
+              }
         }
     }
 
@@ -43,10 +59,18 @@ class Pengeluaran extends Controller
     {
         if($this->model('Pengeluaran_model')->donePengeluaran($id,$id_pengeluaran,$type) > 0) {
             Flasher::setFlash("berhasil","diselesaikan","success");
-            header("Location: " . BASEURL . "/pengeluaran");
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/pengeluaran');
+              }else {
+                  header('Location:' .BASEURL. '/user/pengeluaran');
+              }
         } else {
             Flasher::setFlash("gagal","diselesaikan","danger");
-            header("Location: " . BASEURL . "/pengeluaran");
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/pengeluaran');
+              }else {
+                  header('Location:' .BASEURL. '/user/pengeluaran');
+              }
         }
     }
 
@@ -65,10 +89,18 @@ class Pengeluaran extends Controller
     public function runEdit() {
         if($this->model('Pengeluaran_model')->editPengeluaran($_POST) > 0) {
             Flasher::setFlash('berhasil','dirubah','success');
-            header('Location: ' . BASEURL . "/pengeluaran");  
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/pengeluaran');
+              }else {
+                  header('Location:' .BASEURL. '/user/pengeluaran');
+              }
         } else {
             Flasher::setFlash('gagal','dirubah','danger');
-            header('Location: ' . BASEURL . "/pengeluaran");
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/pengeluaran');
+              }else {
+                  header('Location:' .BASEURL. '/user/pengeluaran');
+              }
         }
     }
     

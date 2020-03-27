@@ -2,6 +2,9 @@
     <div class="row">
         <div class="col-lg-12 d-flex justify-content-between">
         <div><i class="fas fa-cart-plus fa-2x"></i></div>
+        <div>
+            <a class="btn btn-success" href="<?= BASEURL?>/user/table_view_peminjaman">Normal View</a>
+            </div>
             <button type="button" name="" id="" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target=".modalTambahPeminjaman">
             <span class="icon text-white-50">
             <i class="fas fa-plus"></i>
@@ -21,7 +24,7 @@
                         <th scope="col">Nama Mobil</th>
                         <th scope="col">Nama Member</th>
                         <th scope="col">Tanggal Pinjam</th>
-                        <th scope="col">Waktu Pinjam</th>
+                        <th scope="col">Waktu Akhir Pinjam</th>
                         <th scope="col">Biaya Pinjam</th>
                         <th scope="col">Pekerja</th>
                         <th scope="col">Aksi</th>
@@ -39,7 +42,7 @@
                         <td><?= date('d-F-Y',strtotime($pinjam['waktu_pinjam']))?></td>
                         <td><?= $pinjam['biaya_peminjaman']?></td>
                         <td><?= $pinjam['nama_pekerja']?></td>
-                    <td><a href="<?= BASEURL;?>/peminjaman/edit/<?= $pinjam['id_peminjaman']?>" class="btn btn-primary btn-sm">Edit</a> | <a href="<?= BASEURL;?>/peminjaman/hapus/<?= $pinjam['id_peminjaman']?>" onclick="return confirm('Yakin Untuk Menghapus Peminjaman Ini ?');" class="btn btn-danger btn-sm">Hapus</a></td>
+                    <td><a href="<?= BASEURL;?>/user/detail_peminjaman/<?= $pinjam['id_peminjaman']?>" class="btn btn-primary btn-sm">Edit</a> | <a href="<?= BASEURL;?>/peminjaman/hapus/<?= $pinjam['id_peminjaman']?>" onclick="return confirm('Yakin Untuk Menghapus Peminjaman Ini ?');" class="btn btn-danger btn-sm">Hapus</a></td>
                     <td><a href="<?= BASEURL;?>/peminjaman/done/<?= $pinjam['id_peminjaman']?>/<?= $pinjam['id_mobil']?>" onclick="return confirm('Yakin Untuk Menyelesaikan Peminjaman Ini ?');" class="btn btn-success btn-sm">Done <i class="fas fa-check"></i></a></td>
                         </tr>
                     <?php endforeach;?>
@@ -68,7 +71,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nama_mobil">Nama Mobil  :</label>
-                        <select class="form-control" name="id_mobil">
+                        <select class="form-control" name="id_mobil" required>
                         <?php if(count($data['spc_mobil']) == 0)    :?>
                             <option value="" disable selected>No Car Available</option>
                         <?php endif;?>

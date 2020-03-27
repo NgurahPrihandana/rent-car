@@ -40,7 +40,9 @@ class Member_model {
 
     public function hapusMember($id) 
     {
-        $query = "DELETE FROM member WHERE id_member = :id";
+        $query = "DELETE FROM member WHERE id_member = :id
+                    ;DELETE FROM pengeluaran WHERE id_member = :id
+                    ;DELETE FROM peminjaman WHERE id_member = :id";
         $this->db->query($query);
         $this->db->bind('id',$id);
 
@@ -74,6 +76,19 @@ class Member_model {
         
         $this->db->execute();
         return $this->db->rowCount();
+    }
+
+    public function searchMember() {
+        $keyword = $_POST['keyword'];
+        $query = "SELECT * FROM " . $this->table . " WHERE 
+        nama LIKE :keyword OR
+        nomor_ktp LIKE :keyword OR
+        alamat LIKE :keyword OR
+        tanggal_lahir LIKE :keyword";
+        
+        $this->db->query($query);
+        $this->db->bind('keyword',"%$keyword%");
+        return $this->db->resultSet();
     }
 
 

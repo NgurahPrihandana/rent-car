@@ -43,6 +43,7 @@
                     if ($role == '1' || $role == 1) {
                         session_start();
                         $_SESSION['nama_pekerja'] = $datauser['nama_pekerja'];
+                        $_SESSION['id_auth'] = $datauser['id_auth'];
                         $_SESSION['username'] = $username;
                         $_SESSION['status'] = 'login';
                         $_SESSION['role'] = '1';
@@ -65,6 +66,9 @@
                 Flasher::setAuthFlash('Username / Password', 'Salah','danger');
                 header('Location: '.BASEURL.'/auth/login');
             }
+        }   else {
+            Flasher::setAuthFlash('Username ', 'Belum Dimasukkan','danger');
+            header('Location: '.BASEURL.'/auth/login');
         }
     }
 
@@ -79,17 +83,20 @@
 
     public function register($data)
     {
-        
         $nama_pekerja = htmlspecialchars($data["nama_pekerja"]);
         $username = htmlspecialchars($data["username"]);
         $password = htmlspecialchars($data["password"]);
         $conf_password =htmlspecialchars($data["conf_password"]);
 
-        if(isset($nama_pekerja) && $nama_pekerja !== 0) {
-            if(isset($username) && $username !== 0) {
+        if(isset($nama_pekerja) && $nama_pekerja !== "") {
+            if(isset($username) && $username !== "") {
                 if ($datauser = $this->getUserBy("username", $username)) {
                     Flasher::setAuthFlash('Username / Password', 'Telah Digunakan','danger');
-                    header('Location: ' . BASEURL . "/auth/register"); //Untuk Catatan, ingat tambahkan alertnya
+                    if($_SESSION['role'] == "1")  {
+                        header('Location: ' . BASEURL . '/user/pekerja');
+                      }else {
+                        header('Location: ' . BASEURL . "/auth/register"); //Untuk Catatan, ingat tambahkan alertnya
+                      }
                 } else {
                     if (isset($password) && $password !== '' || isset($conf_password) && $conf_password !== '') {
                         if ($password === $conf_password) {
@@ -103,20 +110,36 @@
                             return $this->db->rowCount();
                         }else {
                             Flasher::setAuthFlash('Password / Confirm Password', 'Tidak Sesuai','danger');
-                            header('Location: ' . BASEURL . "/auth/register"); //Untuk Catatan, ingat tambahkan alertnya
+                            if($_SESSION['role'] == "1")  {
+                                header('Location: ' . BASEURL . '/user/pekerja');
+                              }else {
+                                header('Location: ' . BASEURL . "/auth/register"); //Untuk Catatan, ingat tambahkan alertnya
+                              }
                         }
                     }else {
                         Flasher::setAuthFlash('Password / Confirm Password', 'Belum Diinputkan','danger');
-                        header('Location: ' . BASEURL . "/auth/register"); //Untuk Catatan, ingat tambahkan alertnya
+                        if($_SESSION['role'] == "1")  {
+                            header('Location: ' . BASEURL . '/user/pekerja');
+                          }else {
+                            header('Location: ' . BASEURL . "/auth/register"); //Untuk Catatan, ingat tambahkan alertnya
+                          }
                     }
                 }
             } else {
                 Flasher::setAuthFlash('Username', 'Belum Diinputkan','danger');
-                header('Location: ' . BASEURL . "/auth/register"); //Untuk Catatan, ingat tambahkan alertnya
+                if($_SESSION['role'] == "1")  {
+                    header('Location: ' . BASEURL . '/user/pekerja');
+                  }else {
+                    header('Location: ' . BASEURL . "/auth/register"); //Untuk Catatan, ingat tambahkan alertnya
+                  }
             }
         } else {
             Flasher::setAuthFlash('Nama Pekerja', 'Belum Diinputkan','danger');
-            header('Location: ' . BASEURL . "/auth/register"); //Untuk Catatan, ingat tambahkan alertnya
+            if($_SESSION['role'] == "1")  {
+                header('Location: ' . BASEURL . '/user/pekerja');
+              }else {
+                header('Location: ' . BASEURL . "/auth/register"); //Untuk Catatan, ingat tambahkan alertnya
+              }
         }
     }
     }

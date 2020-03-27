@@ -31,7 +31,11 @@ class Auth extends Controller   {
             $this->view('templates/auth/footer');
         } else {
             if($this->model('Auth_model')->register($_POST) > 0)    {
-                header("Location: " .BASEURL ."/auth/login");
+                if($_SESSION['role'] == "1")  {
+                    header('Location: ' . BASEURL . '/user/pekerja');
+                  }else {
+                    header("Location: " .BASEURL ."/auth/login");
+                  }
             }
         }
     }

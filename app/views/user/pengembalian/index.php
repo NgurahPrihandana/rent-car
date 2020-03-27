@@ -27,7 +27,8 @@
                         <td><?= date('d-F-Y',strtotime($mobil['tanggal_peminjaman']))?></td>
                         <td><?= date('d-F-Y',strtotime($mobil['tanggal_pengembalian']))?></td>
                         <td><?= $mobil['biaya_peminjaman']?></td>
-                        <td><a href="<?= BASEURL;?>/pengembalian/hapus/<?= $mobil['id_pengembalian']?>/<?= $mobil['id_peminjaman']?>"
+                        <td><a href="<?= BASEURL;?>/pengembalian/hapus/<?= $mobil['id_pengembalian']?>/<?= $mobil['id_peminjaman']?>" 
+                            onclick="return confirm('Yakin Untuk Menghapus Pengeluaran Mobil Ini ?');" 
                             class="btn btn-danger btn-sm">Hapus</a></td>
                     </tr>
                 <?php endforeach;?>

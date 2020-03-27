@@ -47,7 +47,7 @@
 
 <!-- Heading -->
 <div class="sidebar-heading">
-  Mobil
+  Laporan Mobil
 </div>
 
 <!-- Nav Item - Pages Collapse Menu -->
@@ -58,6 +58,36 @@
   </a>
 </li>
 
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+  Laporan Penyewaan
+</div>
+
+<li class="nav-item">
+  <a class="nav-link collapsed nav-hover" href="<?= BASEURL?>/user/peminjaman">
+    <i class="fas fa-calendar"></i>
+    <span>Peminjaman</span>
+  </a>
+</li>
+
+<li class="nav-item">
+  <a class="nav-link collapsed nav-hover" href="<?= BASEURL?>/user/pengembalian">
+    <i class="fas fa-calendar"></i>
+    <span>Pengembalian</span>
+  </a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+
+<!-- Heading -->
+<div class="sidebar-heading">
+  Laporan Pengeluaran
+</div>
+
 <li class="nav-item">
   <a class="nav-link collapsed nav-hover" href="<?= BASEURL;?>/user/pengeluaran">
     <i class="fas fa-car"></i>
@@ -65,18 +95,10 @@
   </a>
 </li>
 
-<!-- Divider -->
-<hr class="sidebar-divider">
-
-<!-- Heading -->
-<div class="sidebar-heading">
-  Action
-</div>
-
 <li class="nav-item">
-  <a class="nav-link collapsed nav-hover" href="<?= BASEURL?>/pengembalian/index">
-    <i class="fas fa-calendar"></i>
-    <span>Pengembalian</span>
+  <a class="nav-link collapsed nav-hover" href="<?= BASEURL;?>/user/history_pengeluaran">
+    <i class="fas fa-car"></i>
+    <span>History Pengeluaran</span>
   </a>
 </li>
 

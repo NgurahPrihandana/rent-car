@@ -14,7 +14,7 @@
               <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
               <div class="col-lg-6">
                 <div class="p-5">
-                <?= Flasher::authFlash();?>
+                <?= Flasher::Flash();?>
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Super Rent Car</h1>
                   </div>

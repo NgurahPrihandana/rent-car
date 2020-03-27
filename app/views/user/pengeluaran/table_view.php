@@ -1,59 +1,55 @@
-<div class="container shadow-lg p-3 mb-5 bg-white rounded">
-    <div class="row">
-        <div class="col-lg-12">
-        <div class="d-flex justify-content-between" role="alert">
-            <div class="mt-1"><i class="fas fa-car-crash fa-2x"></i></div>
-            <button type="button" name="" id="" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target=".modalTambahPengeluaran">
-            <span class="icon text-white-50">
-            <i class="fas fa-plus"></i>
-            </span>
-            <span class="text">Tambah Pengeluaran</span>
-            </button>
+<div class="container shadow p-4 mb-5 bg-white rounded">
+    <div class="d-flex justify-content-between">
+        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="post" action="<?=BASEURL?>/user/cari_pengeluaran">
+            <div class="input-group">
+                <input type="text" name="keyword" class="form-control bg-light border-1 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" autocomplete="off">
+                <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-search fa-sm"></i>
+                </button>
+                </div>
+            </div>
+        </form>
+        <div>
+            <a class="btn btn-success second-view" href="<?= BASEURL?>/user/pengeluaran">Table View</a>
         </div>
-        <hr class="mr-0">
+        <div>
+        <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target=".modalTambahPengeluaran">
+            <span class="icon text-white-50">
+                    <i class="fas fa-plus"></i>
+            </span>
+            <span class="text">Tambah Pengeluaran</span>  
+        </button>
+        </div>
+    </div>
+    <div class="row ml-5">
+        <?php foreach($data['pengeluaran'] as $pengeluaran)   :?>
+            <div class="col-lg-4 card-deck mt-3">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded"" style="width: 18rem;">
+                    <div class="card-header bg-white" style="font-size:1.4em;"><?= $pengeluaran['nama_mobil']?></div>
+                    <div class="card-body">
+                        <h5 class="card-title fa-1x">Tanggal Pengeluaran :<br><br> <span style="letter-spacing: .1em;"><?= date('d-F-Y',strtotime($pengeluaran['tanggal_pengeluaran']))?></span></h5>
+                        <!-- Divider -->
+                        <hr class="sidebar-divider bg-white">
 
-        <div class="row">
-        <div class="col-lg-12 m-auto">
-            <table class="table text-center table-bordered" id="tablePengeluaran">
-                <caption>List Mobil</caption>
-                <thead class="thead-dark">
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nama Mobil</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Nominal</th>
-                    <th scope="col">Tanggal Pengeluaran</th>
-                    <th scope="col">Aksi</th>
-                    <th scope="col">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php 
-                    $i = 1;
-                    foreach($data['pengeluaran'] as $expense)   :
-                    ?>
-                    <tr>
-                        <th scope="row"><?= $i++?></th>
-                        <td><?= $expense['nama_mobil']?></td>
-                        <td>
-                        <?php 
-                            if($expense['type'] == 2) : ?>
+                        <p class="card-text">Type Pengeluaran : <?php 
+                            if($pengeluaran['type'] == 2) : ?>
                                 <p class="text-danger">Service</p>
                             <?php else  :  ?>
                                 <p class="text-warning">Samsat</p>
-                            <?php endif;?>
-                        </td>
-                        <td><?= $expense['nominal']?></td>
-                        <td><?= date('d-F-Y',strtotime($expense['tanggal_pengeluaran']))?></td>
-                        <td><a href="<?= BASEURL;?>/pengeluaran/edit/<?= $expense['id_pengeluaran']?>" class="btn btn-primary btn-sm">Edit</a></td>
-                        <td><a href="<?= BASEURL;?>/pengeluaran/done/<?= $expense['id_mobil']?>/<?= $expense['id_pengeluaran']?>/<?= $expense['type']?>" class="btn btn-sm btn-success">Done <i class="fas fa-check"></i></a></td>
-                    </tr>
-                    <?php endforeach;?>
-                </tbody>
-            </table>
-        </div>
-        </div>
-        </div>
+                            <?php endif;?></p>
+
+                        <hr class="sidebar-divider bg-white">
+                        
+                        <p class="card-text">Nominal : <?= $pengeluaran['nominal']?></p>
+                    </div>
+                    <div class="card-footer bg-white">
+                        <a href="<?= BASEURL?>/user/detail_pengeluaran/<?= $pengeluaran['id_pengeluaran']?>" class="btn btn-success float-right">Detail</a>
+                        <a href="<?= BASEURL?>/pengeluaran/hapus/<?= $pengeluaran['id_pengeluaran']?>" onclick="return confirm('Yakin Untuk Menyelesaikan Pengeluaran Ini ?');" class="btn btn-danger float-right mr-2">Hapus</a>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach;?>
     </div>
 </div>
 

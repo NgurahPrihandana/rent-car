@@ -87,3 +87,7 @@
     width: 90% !important;
     background-size: cover;
 }
+
+.second-view {
+    margin-right: 300px;
+}

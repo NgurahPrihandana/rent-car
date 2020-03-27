@@ -20,10 +20,18 @@
         {
             if($this->model('Mobil_model')->tambahMobil($_POST) > 0) {
                 Flasher::setFlash('berhasil', 'ditambahkan', 'success');
-                header('Location: ' . BASEURL . '/mobil');
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/mobil');
+                  }else {
+                      header('Location:' .BASEURL. '/user/mobil');
+                  }
             } else {
                 Flasher::setFlash('gagal', 'ditambahkan', 'danger');
-                header('Location: ' . BASEURL . '/mobil');
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/mobil');
+                  }else {
+                      header('Location:' .BASEURL. '/user/mobil');
+                  }
             }
                 
         }
@@ -42,10 +50,18 @@
         public function runEdit() {
             if($this->model('Mobil_model')->editMobil($_POST) > 0) {
                 Flasher::setFlash('berhasil','dirubah','success');
-                header('Location: ' . BASEURL . "/mobil");  
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/mobil');
+                  }else {
+                      header('Location:' .BASEURL. '/user/mobil');
+                  }
             } else {
                 Flasher::setFlash('gagal','dirubah','danger');
-                header('Location: ' . BASEURL . "/mobil");
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/mobil');
+                  }else {
+                      header('Location:' .BASEURL. '/user/mobil');
+                  }
             }
         }
 
@@ -53,10 +69,18 @@
         {
             if($this->model('Mobil_model')->hapusMobil($id) > 0) {
                 Flasher::setFlash('berhasil', 'dihapus', 'success');
-                header('Location: ' . BASEURL . '/mobil');
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/mobil');
+                  }else {
+                      header('Location:' .BASEURL. '/user/mobil');
+                  }
             } else {
                 Flasher::setFlash('gagal', 'dihapus', 'success');
-                header('Location: ' . BASEURL . '/mobil');
+                if($_SESSION['role'] == "2")  {
+                    header('Location: ' . BASEURL . '/mobil');
+                  }else {
+                      header('Location:' .BASEURL. '/user/mobil');
+                  }
             }
         }
     }

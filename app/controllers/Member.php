@@ -17,11 +17,19 @@ class Member extends Controller {
     public function tambah() {
         if($this->model('Member_model')->tambahMember($_POST) > 0) {
             Flasher::setFlash('berhasil','ditambahkan','success');
-            header('Location: ' . BASEURL . '/Member');
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/Member');
+              }else {
+                  header('Location:' .BASEURL. '/user/member');
+              }
             exit;
         }else {
             Flasher::setFlash('gagal','ditambahkan','danger');
-            header('Location: ' . BASEURL . '/Member');
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/Member');
+              }else {
+                  header('Location:' .BASEURL. '/user/member');
+              }
             exit;
         }
     }
@@ -39,22 +47,37 @@ class Member extends Controller {
     public function runEdit() {
         if($this->model('Member_model')->editMember($_POST) > 0) {
             Flasher::setFlash('berhasil','dirubah','success');
-            header('Location: ' . BASEURL . "/member");
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/Member');
+              }else {
+                  header('Location:' .BASEURL. '/user/member');
+              }
         } else {
             Flasher::setFlash('gagal','dirubah','danger');
-            header('Location: ' . BASEURL . "/member");
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/Member');
+              }else {
+                  header('Location:' .BASEURL. '/user/member');
+              }
         }
     }
 
     public function hapus($id) {
         if($this->model('Member_model')->hapusMember($id) > 0) {
             Flasher::setFlash('berhasil','dihapus','success');
-            header('Location:' . BASEURL . '/Member');
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/Member');
+              }else {
+                  header('Location:' .BASEURL. '/user/member');
+              }
             exit;
         } else {
-            Flasher::setFlash('gagal','dihapus','danger');
+            if($_SESSION['role'] == "2")  {
+                header('Location: ' . BASEURL . '/Member');
+              }else {
+                  header('Location:' .BASEURL. '/user/member');
+              }
             header('Location:' . BASEURL . '/Member');
         }
     }
-
 }

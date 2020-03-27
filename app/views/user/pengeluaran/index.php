@@ -3,6 +3,9 @@
         <div class="col-lg-12">
         <div class="d-flex justify-content-between" role="alert">
             <div class="mt-1"><i class="fas fa-car-crash fa-2x"></i></div>
+            <div>
+            <a class="btn btn-success" href="<?= BASEURL?>/user/table_view_pengeluaran">Normal View</a>
+            </div>
             <button type="button" name="" id="" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target=".modalTambahPengeluaran">
             <span class="icon text-white-50">
             <i class="fas fa-plus"></i>
@@ -45,8 +48,8 @@
                         </td>
                         <td><?= $expense['nominal']?></td>
                         <td><?= date('d-F-Y',strtotime($expense['tanggal_pengeluaran']))?></td>
-                        <td><a href="<?= BASEURL;?>/pengeluaran/edit/<?= $expense['id_pengeluaran']?>" class="btn btn-primary btn-sm">Edit</a></td>
-                        <td><a href="<?= BASEURL;?>/pengeluaran/done/<?= $expense['id_mobil']?>/<?= $expense['id_pengeluaran']?>/<?= $expense['type']?>" class="btn btn-sm btn-success">Done <i class="fas fa-check"></i></a></td>
+                        <td><a href="<?= BASEURL;?>/user/detail_pengeluaran/<?= $expense['id_pengeluaran']?>" class="btn btn-primary btn-sm">Edit</a></td>
+                        <td><a href="<?= BASEURL;?>/pengeluaran/done/<?= $expense['id_mobil']?>/<?= $expense['id_pengeluaran']?>/<?= $expense['type']?>" onclick="return confirm('Yakin Untuk Menyelesaikan Pengeluaran Ini ?');" class="btn btn-sm btn-success">Done <i class="fas fa-check"></i></a></td>
                     </tr>
                     <?php endforeach;?>
                 </tbody>

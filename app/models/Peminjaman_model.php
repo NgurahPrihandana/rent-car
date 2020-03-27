@@ -96,7 +96,6 @@
             $this->db->bind('waktu_pinjam',$data['waktu_pinjam']);
             $this->db->bind('id_peminjaman',$data['id_peminjaman']);
             $this->db->bind('id_mobil',$data['id_mobil']);
-            $this->db->bind('id_mobil_peminjaman',$data['id_mobil_awal']);
             $this->db->execute();
             
             if($data['id_mobil_peminjaman'] !== $data['id_mobil'])  {
@@ -109,6 +108,31 @@
             }
 
             return $this->db->rowCount();
+        }
+
+        public function searchPeminjaman()
+        {
+            if(($_POST['keyword']) != null && isset($_POST['keyword']))    {
+                $keyword = $_POST['keyword'];
+    
+                $query = "SELECT *, DATE_FORMAT(tanggal_peminjaman, '%d-%m-%Y') as tgl_pinjam, 
+                        DATE_FORMAT(waktu_pinjam, '%d-%m-%Y') as waktu_pinjam FROM " . $this->table. "
+                        INNER JOIN tb_mobil ON peminjaman.id_mobil = tb_mobil.id_mobil
+                        INNER JOIN member ON peminjaman.id_member = member.id_member
+                        INNER JOIN auth ON peminjaman.id_auth = auth.id_auth WHERE peminjaman.status = 0 AND
+                        tanggal_peminjaman LIKE :keyword OR
+                        waktu_pinjam LIKE :keyword OR
+                        biaya_peminjaman LIKE :keyword OR
+                        tb_mobil.nama_mobil LIKE :keyword OR
+                        auth.nama_pekerja LIKE :keyword OR 
+                        member.nama LIKE :keyword";
+        
+                $this->db->query($query);
+                $this->db->bind('keyword',"%$keyword%");
+            } else {
+                $this->getAllPeminjaman();
+            }
+            return $this->db->resultSet();
         }
     }
 

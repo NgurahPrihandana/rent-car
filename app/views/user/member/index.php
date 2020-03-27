@@ -8,6 +8,9 @@
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-between">
             <div><i class="fas fa-user-alt fa-2x"></i></div>
+            <div>
+            <a class="btn btn-success" href="<?= BASEURL?>/user/table_view_member">Normal View</a>
+            </div>
             <button type="button" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target=".modalTambahMember">
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
@@ -40,8 +43,8 @@
                 <td><?=$m['nama'] ?></td>
                 <td><?=$m['nomor_ktp'] ?></td>
                 <td><?=$m['alamat'] ?></td>
-                <td><?=date('d-F-Y',strtotime($m['tanggal_lahir'])) ?></td>
-                <td><a href="<?= BASEURL?>/member/edit/<?= $m['id_member']?>" class="btn btn-primary btn-sm">Edit</a> | <a href="<?= BASEURL;?>/Member/hapus/<?= $m['id_member']?>" onclick="return confirm('Yakin Untuk Menghapus Member Ini ?');" class="btn btn-danger btn-sm">Hapus</a></td>
+                <td><?= date('d-F-Y',strtotime($m['tanggal_lahir']))?></td>
+                <td><a href="<?= BASEURL?>/user/detail_member/<?= $m['id_member']?>" class="btn btn-primary btn-sm">Detail</a> | <a href="<?= BASEURL;?>/Member/hapus/<?= $m['id_member']?>" onclick="return confirm('Yakin Untuk Menghapus Member Ini ?');" class="btn btn-danger btn-sm">Hapus</a></td>
                 </tr>
               <?php endforeach; ?>
           </tbody>

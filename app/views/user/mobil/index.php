@@ -2,6 +2,9 @@
     <div class="row">
         <div class="col-lg-12 d-flex justify-content-between">
             <div><i class="fas fa-car fa-2x"></i></div>
+            <div>
+            <a class="btn btn-success" href="<?= BASEURL?>/user/table_view_mobil">Normal View</a>
+            </div>
             <button type="button" name="" id="" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target=".modalTambahMobil">
             <span class="icon text-white-50">
             <i class="fas fa-plus"></i>
@@ -41,7 +44,7 @@
                             <p class="text-danger">Diservis</p>
                         <?php endif ;?>
                     </td>
-                <td><a href="<?= BASEURL?>/mobil/edit/<?= $mobil['id_mobil']?>" class="btn btn-primary btn-sm">Edit</a> | <a href="<?= BASEURL;?>/Mobil/hapus/<?= $mobil['id_mobil']?>" onclick="return confirm('Yakin Untuk Menghapus Mobil Ini ?');" class="btn btn-danger btn-sm">Hapus</a></td>
+                <td><a href="<?= BASEURL?>/user/detail_mobil/<?= $mobil['id_mobil']?>" class="btn btn-primary btn-sm">Detail</a> | <a href="<?= BASEURL;?>/user/hapus_mobil/<?= $mobil['id_mobil']?>/<?= $data['function']?>" onclick="return confirm('Yakin Untuk Menghapus Mobil Ini ?');" class="btn btn-danger btn-sm">Hapus</a></td>
                     </tr>
                     <?php endforeach;?>
                 </tbody>

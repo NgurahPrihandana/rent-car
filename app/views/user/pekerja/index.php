@@ -43,7 +43,7 @@
                                 </td>
                                 <td>
                                     <div class="text-center">
-                                        <a href="<?= BASEURL?>/user/hapus_pekerja/<?= $auth['id_auth']?>" class="btn btn-danger btn-sm">Hapus</a>
+                                        <a href="<?= BASEURL?>/user/hapus_pekerja/<?= $auth['id_auth']?>" onclick="return confirm('Yakin Untuk Menghapus Pekerja Ini ?');" class="btn btn-danger btn-sm">Hapus</a>
                                     </div>
                                 </td>
                             </tr>
@@ -66,18 +66,18 @@
                   Inputkan Pekerja Baru <a href=""><i class="fas fa-circle float-right" style="color:red;"></i></a>
               </div>
               <div class="form mt-3 container">
-                  <form action="<?=BASEURL; ?>/Member/tambah" method="post">
+                  <form action="<?=BASEURL; ?>/auth/register" method="post">
                     <div class="form-group">
                       <input type="hidden" value="">
                     </div>
                     <div class="form-group">
-                        <label for="nama">Nama  :</label>
-                        <input type="text" class="form-control" id="nama" name="nama" required>
+                        <label for="nama_pekerja">Nama Pekerja  :</label>
+                        <input type="text" class="form-control" id="nama_pekerja" name="nama_pekerja" required>
                     </div>
 
                     <div class="form-group">
                       <label for="username">Username  :</label>
-                      <input type="number" class="form-control" id="username" name="username" required>
+                      <input type="text" class="form-control" id="username" name="username" required>
                     </div>
 
                     <div class="form-group">
@@ -86,11 +86,11 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="password2">Confirm Password  :</label>
-                      <input type="password" class="form-control" id="password2" name="password2" required>
+                      <label for="conf_password">Confirm Password  :</label>
+                      <input type="password" class="form-control" id="conf_password" name="conf_password" required>
                     </div>
 
-                    <button type="submit" name="submit" class="btn btn-primary float-right">Tambah Pekerja</button>
+                    <button type="submit" name="register" class="btn btn-primary float-right">Tambah Pekerja</button>
                     <button type="reset" class="btn btn-danger mb-3 mr-2 float-right">Reset</button>
                   </form>
                 </div>
